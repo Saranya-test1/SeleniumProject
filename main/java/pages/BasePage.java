@@ -1,17 +1,26 @@
 package pages;
 
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+
+import utils.DriverFactory;
 
 public class BasePage {
-    protected static WebDriver driver;
+	protected WebDriver driver;
+	
+	public BasePage(WebDriver driver) {
+		this.driver = driver;
+	}
+	/*
+	 * public void openApplication() { driver.get("https://www.demoblaze.com/"); }
+	 */
 
-    public BasePage(WebDriver driver) {
-        BasePage.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
+	/*
+	 * public class BasePage() { BasePage.driver = driver;
+	 * PageFactory.initElements(driver, this); }
+	 */
 
-    public static WebDriver getDriver() {
-        return driver;
-    }
+	/*
+	 * public static WebDriver getDriver() { return driver; }
+	 */
 }

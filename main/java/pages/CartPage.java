@@ -28,8 +28,9 @@ public class CartPage extends BasePage {
 	@FindBy(xpath = "//td[contains(text(),'Samsung galaxy s6')]/following-sibling::td[2]")
 	private WebElement productDiscount;
 
-	public CartPage() {
-		super(getDriver());
+	public CartPage(WebDriver driver) {
+		super(driver);
+	    PageFactory.initElements(driver, this);
 	}
 	
 	
@@ -50,7 +51,10 @@ public class CartPage extends BasePage {
 	
 	public void addToCart() {
 		//new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(addToCartButton)).click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
+	   
 		addToCartButton.click();
 	}
 

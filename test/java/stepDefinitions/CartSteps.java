@@ -2,11 +2,21 @@ package stepDefinitions;
 
 import io.cucumber.java.en.*;
 import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
+
 import pages.CartPage;
+import utils.DriverFactory;
 
 public class CartSteps {
-	CartPage cartPage = new CartPage();
-
+	//CartPage cartPage = new CartPage();
+	private WebDriver driver;
+    private CartPage cartPage;
+    
+    public CartSteps() {
+        this.driver = DriverFactory.getDriver();  // Get WebDriver instance
+        this.cartPage = new CartPage(driver);   // Pass WebDriver to CartPage
+    }
+    
 	@When("User adds {string} to the cart")
 	public void user_adds_product(String productName) {
 		cartPage.clickProduct();
